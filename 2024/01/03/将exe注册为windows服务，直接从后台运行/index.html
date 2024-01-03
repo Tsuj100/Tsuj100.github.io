@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+  <title>将exe注册为windows服务，直接从后台运行 | Tsuj</title>
+  <meta name="google-site-verification" content="" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta itemprop="name" content="Tsuj" />
+  <meta itemprop="description" content="" />
+  <meta itemprop="image" content="/tsuj.ico" />
+  <link rel="shortcut icon" href="/tsuj.ico" type="image/x-icon">
+  <!-- keywords and description -->
+  
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <script src="//cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css" integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js" integrity="sha384-0fdwu/T/EQMsQlrHCCHoH10pkPLlKA1jL5dFyUOvB3lfeT2540/2g6YgSi2BL14p" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
+      onload="renderMathInElement(document.body);"></script>
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+  <div id="container">
+    <header>
+  <div class="site-title">
+    <a href="/">
+      Tsuj
+    </a>
+  </div>
+  
+  
+  <p class="links">
+    
+    <a href="">
+      <img src="/images/links/blog.png" alt="">
+    </a>
+    
+  </p>
+  
+</header>
+    <div id="main">
+      <article class="post">
+  <h3 class="date">
+  <time datetime="2024-01-03T02:04:23.017Z">
+    Jan 3, 2024
+  </time>
+</h3>
+  <h1>将exe注册为windows服务，直接从后台运行</h1>
+  <p class="post-info">
+  
+  
+</p>
+  
+  
+  <article>
+    <h1 id="将-exe-注册为-windows-服务，直接从后台运行"><a href="#将-exe-注册为-windows-服务，直接从后台运行" class="headerlink" title="将 exe 注册为 windows 服务，直接从后台运行"></a>将 exe 注册为 windows 服务，直接从后台运行</h1><blockquote>
+<p>使用 windows 自带的命令 sc</p>
+</blockquote>
+<p>首先我们要打开 cmd，下面的命令在 cmd 中运行，最好使用管理员运行 cmd</p>
+<h2 id="注册服务："><a href="#注册服务：" class="headerlink" title="注册服务："></a>注册服务：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sc create ceshi binpath= D:\ceshi\ceshi.exe <span class="built_in">type</span>= own start= auto displayname= ceshi</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>type= own</code></td>
+<td align="left"><strong>own</strong> - 指定在其自己的进程中运行的服务。 它不会与其他服务共享可执行文件。 这是默认值</td>
+</tr>
+<tr>
+<td align="left"><code>start= auto</code></td>
+<td align="left"><strong>auto</strong>-服务自动启动</td>
+</tr>
+<tr>
+<td align="left"><code>binpath</code></td>
+<td align="left">你的应用程序所在的路径</td>
+</tr>
+<tr>
+<td align="left"><code>displayname</code></td>
+<td align="left">服务显示的名称</td>
+</tr>
+</tbody></table>
+<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows-server/administration/windows-commands/sc-config">sc.exe 配置 | Microsoft Learn</a></p>
+<h2 id="如何判断服务是否注册成功："><a href="#如何判断服务是否注册成功：" class="headerlink" title="如何判断服务是否注册成功："></a>如何判断服务是否注册成功：</h2><p>在 cmd 中输入<code>services.msc</code>打开系统服务，查看是否出现<code>ceshi</code>名称的服务（即<code>displayname=</code>后面的参数，我这里是<code>ceshi</code>）</p>
+<p>or</p>
+<p>按下面的方式尝试启动服务</p>
+<h2 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net <span class="built_in">start</span> ceshi</span><br></pre></td></tr></table></figure>
+
+<h2 id="停止服务"><a href="#停止服务" class="headerlink" title="停止服务"></a>停止服务</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net stop ceshi</span><br></pre></td></tr></table></figure>
+
+<h2 id="删除服务"><a href="#删除服务" class="headerlink" title="删除服务"></a>删除服务</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sc</span> delete <span class="string">&quot;ceshi&quot;</span></span><br></pre></td></tr></table></figure>
+
+  </article>
+  
+</article>
+
+
+    </div>
+  </div>
+  <footer>
+   
+  <!-- <p>
+    Powered by <a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/syy11cn/hexo-theme-linear">Linear</a> from <a target="_blank" rel="noopener" href="https://syy11.cn">Yiyang Sun</a>
+  </p> -->
+</footer>
+
+  
+  <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+  <script>
+    Waline({
+      el: '#waline',
+      placeholder: '',
+      avatar: 'retro',
+      visitor: true,
+      requiredFields: ['nick', 'mail'],
+      serverURL: '',
+      emoji: [
+        'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili',
+        'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/qq',
+        'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/alus',
+        'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/tw-emoji',
+        'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/weibo',
+        'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/tieba',
+      ]
+    });
+  </script>
+</body>
+
+</html>
