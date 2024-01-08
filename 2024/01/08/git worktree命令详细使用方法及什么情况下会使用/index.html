@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+  <title>git worktree命令详细使用方法及什么情况下会使用 | Tsuj</title>
+  <meta name="google-site-verification" content="" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta itemprop="name" content="Tsuj" />
+  <meta itemprop="description" content="" />
+  <meta itemprop="image" content="/tsuj.ico" />
+  <link rel="shortcut icon" href="/tsuj.ico" type="image/x-icon">
+  <!-- keywords and description -->
+  
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <script src="//cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.css" integrity="sha384-KiWOvVjnN8qwAZbuQyWDIbfCLFhLXNETzBQjA/92pIowpC0d2O3nppDGQVgwd2nB" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/katex.min.js" integrity="sha384-0fdwu/T/EQMsQlrHCCHoH10pkPLlKA1jL5dFyUOvB3lfeT2540/2g6YgSi2BL14p" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.3/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
+      onload="renderMathInElement(document.body);"></script>
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+
+<body>
+  <div id="container">
+    <header>
+  <div class="site-title">
+    <a href="/">
+      Tsuj
+    </a>
+  </div>
+  
+  
+  <p class="links">
+    
+    <a href="">
+      <img src="/images/links/blog.png" alt="">
+    </a>
+    
+  </p>
+  
+</header>
+    <div id="main">
+      <article class="post">
+  <h3 class="date">
+  <time datetime="2024-01-08T03:00:13.461Z">
+    Jan 8, 2024
+  </time>
+</h3>
+  <h1>git worktree命令详细使用方法及什么情况下会使用</h1>
+  <p class="post-info">
+  
+  
+</p>
+  
+  
+  <article>
+    <h2 id="git-worktree-命令详细使用方法及什么情况下会使用"><a href="#git-worktree-命令详细使用方法及什么情况下会使用" class="headerlink" title="git worktree 命令详细使用方法及什么情况下会使用"></a>git worktree 命令详细使用方法及什么情况下会使用</h2><p><code>git worktree</code> 是 Git 中的一个命令，它允许你在同一个仓库中同时工作在多个工作目录中，每个目录都有自己的工作树和索引。这对于同时处理多个分支或版本非常有用。以下是 <code>git worktree</code> 命令的一些详细使用方法和情况下的常见用例：</p>
+<h3 id="1-创建一个新的工作树："><a href="#1-创建一个新的工作树：" class="headerlink" title="1. 创建一个新的工作树："></a>1. 创建一个新的工作树：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git worktree add &lt;path&gt; &lt;branch&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这会在指定的 <code>&lt;path&gt;</code> 目录下创建一个新的工作树，并检出指定的 <code>&lt;branch&gt;</code> 分支。例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git worktree add ../my-feature-branch feature-branch</span><br></pre></td></tr></table></figure>
+
+<p>这会在上级目录中创建一个新的工作树，切换到 <code>feature-branch</code> 分支。</p>
+<h3 id="2-查看当前的工作树："><a href="#2-查看当前的工作树：" class="headerlink" title="2. 查看当前的工作树："></a>2. 查看当前的工作树：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git worktree list</span><br></pre></td></tr></table></figure>
+
+<p>这会列出所有的工作树及其路径。</p>
+<h3 id="3-移除工作树："><a href="#3-移除工作树：" class="headerlink" title="3. 移除工作树："></a>3. 移除工作树：</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git worktree remove &lt;path&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这会移除指定路径下的工作树。</p>
+<h3 id="4-锁定工作树："><a href="#4-锁定工作树：" class="headerlink" title="4. 锁定工作树："></a>4. 锁定工作树：</h3><p>在某些情况下，你可能想要锁定工作树，防止意外的修改。可以使用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git worktree lock &lt;path&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-解锁工作树："><a href="#5-解锁工作树：" class="headerlink" title="5. 解锁工作树："></a>5. 解锁工作树：</h3><p>如果你需要在一个被锁定的工作树上进行修改，可以使用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git worktree unlock &lt;path&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-同时在多个工作树中工作的常见用例："><a href="#6-同时在多个工作树中工作的常见用例：" class="headerlink" title="6. 同时在多个工作树中工作的常见用例："></a>6. 同时在多个工作树中工作的常见用例：</h3><ul>
+<li><strong>并行开发不同功能或修复：</strong> 你可以为每个任务创建一个独立的工作树，这样它们之间的更改不会相互干扰。</li>
+<li><strong>测试不同分支：</strong> 你可以在一个工作树上测试一个分支，同时在另一个工作树上测试另一个分支。</li>
+<li><strong>维护长期和短期修复：</strong> 你可以使用一个工作树来处理长期的功能开发，而另一个工作树则用于及时修复和维护。</li>
+</ul>
+<p><code>git worktree</code> 的使用场景主要是在需要同时处理多个任务、分支或版本时。这使得在同一个仓库中进行并行开发变得更加方便。</p>
+<h2 id="指定某一次提交创建-worktree"><a href="#指定某一次提交创建-worktree" class="headerlink" title="指定某一次提交创建 worktree"></a>指定某一次提交创建 worktree</h2><p>在 Git 中，你可以使用 <code>git worktree</code> 命令结合提交哈希值来创建一个工作树。以下是具体的步骤：</p>
+<ol>
+<li><p><strong>查看提交历史：</strong></p>
+<p>首先，你需要找到你想要创建工作树的特定提交的哈希值。可以使用 <code>git log</code> 或其他提交历史查看命令来获取。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+
+<p>找到你想要的提交的哈希值。</p>
+</li>
+<li><p><strong>使用 <code>git worktree</code> 创建工作树：</strong></p>
+<p>使用以下命令创建一个工作树，指定要创建的提交：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git worktree add -b &lt;branch_name&gt; &lt;path&gt; &lt;commit_hash&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>&lt;branch_name&gt;</code>：新分支的名称，如果该分支不存在的话。</li>
+<li><code>&lt;path&gt;</code>：新工作树的路径。</li>
+<li><code>&lt;commit_hash&gt;</code>：你想要基于的提交的哈希值。</li>
+</ul>
+<p>例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git worktree add -b my-feature ../my-feature-branch abcd1234</span><br></pre></td></tr></table></figure>
+
+<p>这会在 <code>../my-feature-branch</code> 目录中创建一个新的工作树，基于提交哈希值为 <code>abcd1234</code>，并创建一个名为 <code>my-feature</code> 的新分支。</p>
+</li>
+</ol>
+<p>请注意，使用 <code>git worktree add</code> 时，如果要基于一个已有的分支，可以将 <code>-b &lt;branch_name&gt;</code> 部分省略，Git 会自动使用已有的分支。如果指定的分支不存在，Git 会自动创建一个新的分支。</p>
+<h2 id="开发完如何合并到主分支"><a href="#开发完如何合并到主分支" class="headerlink" title="开发完如何合并到主分支"></a>开发完如何合并到主分支</h2><p>一旦你在一个工作树中完成了特定功能的开发，通常的做法是将这些更改合并回主分支（通常是 <code>master</code> 或 <code>main</code> 分支）。以下是基本的合并步骤：</p>
+<ol>
+<li><p><strong>切换回主分支：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br></pre></td></tr></table></figure>
+
+<p>或者，如果你使用的是 <code>main</code> 分支：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout main</span><br></pre></td></tr></table></figure>
+
+<p>这将确保你目前在主分支上。</p>
+</li>
+<li><p><strong>拉取主分支最新的更改：</strong></p>
+<p>在合并更改之前，确保你的主分支是最新的：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
+
+<p>或者，如果你使用的是 <code>main</code> 分支：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin main</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>合并你的分支：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge your-feature-branch</span><br></pre></td></tr></table></figure>
+
+<p>或者，如果你使用的是 <code>main</code> 分支：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge your-feature-branch</span><br></pre></td></tr></table></figure>
+
+<p>这会将你的功能分支的更改合并到主分支。</p>
+</li>
+<li><p><strong>解决合并冲突（如果有的话）：</strong></p>
+<p>如果 Git 在合并时发现冲突，它会在合并冲突的文件中显示冲突标记。需要手动解决冲突，然后使用以下命令标记文件为已解决：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add &lt;conflicted_file&gt;</span><br></pre></td></tr></table></figure>
+
+<p>然后继续合并：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge --<span class="built_in">continue</span></span><br></pre></td></tr></table></figure>
+
+<p>或者使用以下命令取消合并：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge --abort</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>推送到远程仓库：</strong></p>
+<p>一旦合并完成，将更新推送到远程仓库：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+
+<p>或者，如果你使用的是 <code>main</code> 分支：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin main</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>以上步骤基于你的开发是在一个新的分支（例如 <code>your-feature-branch</code>）上进行的。确保替换命令中的分支名称以匹配你的实际分支名称。如果你在 <code>main</code> 或 <code>master</code> 分支上进行开发，可能需要直接在那个分支上提交更改，而不是创建一个新的分支。</p>
+<h2 id="git-如何其它分支上的某一次提交"><a href="#git-如何其它分支上的某一次提交" class="headerlink" title="git 如何其它分支上的某一次提交"></a>git 如何其它分支上的某一次提交</h2><p>如果你想将另一个分支上的某一次提交应用到当前分支，可以使用 <code>git cherry-pick</code> 命令。以下是具体步骤：</p>
+<ol>
+<li><p><strong>切换到目标分支：</strong></p>
+<p>首先，确保你在要应用提交的目标分支上：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout &lt;target-branch&gt;</span><br></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>查找要应用的提交的哈希值：</strong></p>
+<p>使用 <code>git log</code> 或其他提交查看命令找到要应用的提交的哈希值：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>切回到当前分支：</strong></p>
+<p>切回到你想要应用这个提交的当前分支：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout &lt;current-branch&gt;</span><br></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout feature-branch</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>应用提交：</strong></p>
+<p>使用 <code>git cherry-pick</code> 命令应用提交：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git cherry-pick &lt;commit-hash&gt;</span><br></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git cherry-pick abc1234</span><br></pre></td></tr></table></figure>
+
+<p>如果应用过程中出现冲突，需要手动解决冲突，然后使用以下命令标记文件为已解决：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add &lt;conflicted-file&gt;</span><br></pre></td></tr></table></figure>
+
+<p>继续 cherry-pick 过程：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git cherry-pick --<span class="built_in">continue</span></span><br></pre></td></tr></table></figure>
+
+<p>或者取消 cherry-pick：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git cherry-pick --abort</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>解决冲突后提交：</strong></p>
+<p>如果有冲突，解决冲突后，需要手动提交：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>推送到远程仓库：</strong></p>
+<p>最后，如果你想将这个变更推送到远程仓库：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin &lt;current-branch&gt;</span><br></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin feature-branch</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>请注意，<code>git cherry-pick</code> 是将单个提交应用到当前分支的操作。如果你需要应用多个提交，你可能需要多次执行 <code>git cherry-pick</code> 或者考虑其他合并策略，比如使用 <code>git merge</code>。</p>
+
+  </article>
+  
+</article>
+
+
+    </div>
+  </div>
+  <footer>
+   
+  <!-- <p>
+    Powered by <a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/syy11cn/hexo-theme-linear">Linear</a> from <a target="_blank" rel="noopener" href="https://syy11.cn">Yiyang Sun</a>
+  </p> -->
+</footer>
+
+  
+  <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+  <script>
+    Waline({
+      el: '#waline',
+      placeholder: '',
+      avatar: 'retro',
+      visitor: true,
+      requiredFields: ['nick', 'mail'],
+      serverURL: '',
+      emoji: [
+        'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili',
+        'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/qq',
+        'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/alus',
+        'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/tw-emoji',
+        'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/weibo',
+        'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/tieba',
+      ]
+    });
+  </script>
+</body>
+
+</html>
