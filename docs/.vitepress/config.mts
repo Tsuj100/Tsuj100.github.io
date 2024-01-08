@@ -8,13 +8,13 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
+      { text: 'document', link: '/git worktree命令详细使用方法及什么情况下会使用' }
     ],
 
     sidebar: [
       {
-        text: 'Examples',
-        items: [{ text: 'Markdown Examples', link: '/markdown-examples' }]
+        text: 'document',
+        items: [{ text: 'git worktree命令', link: '/git worktree命令详细使用方法及什么情况下会使用' }]
       }
     ],
 

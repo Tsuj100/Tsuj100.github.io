@@ -8,8 +8,8 @@ hero:
   tagline: My great project tagline
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: git worktree命令详细
+      link: /git worktree命令详细使用方法及什么情况下会使用
 
 features:
   - title: Feature A
