@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: git worktree命令详细
-      link: /git worktree命令详细使用方法及什么情况下会使用
+      link: /git-worktree命令详细使用方法及什么情况下会使用
 
 features:
   - title: Feature A
