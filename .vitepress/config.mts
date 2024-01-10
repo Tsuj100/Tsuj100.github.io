@@ -8,15 +8,15 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'document', link: '/git-worktree命令详细使用方法及什么情况下会使用' }
+      { text: 'document', link: '/docs/git-worktree命令详细使用方法及什么情况下会使用' }
     ],
 
     sidebar: [
       {
         text: 'document',
         items: [
-          { text: 'git-worktree命令', link: '/git-worktree命令详细使用方法及什么情况下会使用' },
-          { text: '前端依赖缓存位置配置', link: '/前端依赖缓存位置配置' }
+          { text: 'git-worktree命令', link: '/docs/git-worktree命令详细使用方法及什么情况下会使用' },
+          { text: '前端依赖缓存位置配置', link: '/docs/前端依赖缓存位置配置' }
         ]
       }
     ],
