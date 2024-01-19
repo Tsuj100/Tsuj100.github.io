@@ -114,7 +114,7 @@ default-character-set=utf8mb4
 
 # 以 root 用户远程连接 MySQL8.0 问题总结
 
-```
+```bash
 
 # 使用root用户登录mysql数据库，进入到mysql数据库
 mysql -u root -p
