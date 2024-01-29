@@ -17,7 +17,8 @@ export default defineConfig({
         items: [
           { text: 'git-worktree命令', link: '/docs/git-worktree命令详细使用方法及什么情况下会使用' },
           { text: '前端依赖缓存位置配置', link: '/docs/前端依赖缓存位置配置' },
-          { text: 'Windows安装MySQL8.0', link: '/docs/Windows系统中安装MySQL8.0及配置方法' }
+          { text: 'Windows安装MySQL8.0', link: '/docs/Windows系统中安装MySQL8.0及配置方法' },
+          { text: 'Git拉取代码时自动转换换行符', link: '/docs/关闭Git拉取代码时自动转换换行符' }
         ]
       }
     ],
