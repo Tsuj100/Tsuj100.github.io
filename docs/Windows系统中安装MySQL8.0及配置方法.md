@@ -1,14 +1,14 @@
 # Windows 系统中安装 MySQL8.0 及配置方法
 
-**一、下载 zip 地址**
+## **一、下载 zip 地址**
 
 https://dev.mysql.com/downloads/mysql/8.0.html
 
 ![img](./assets/1642260053698078991.png)
 
-**二、解压到本地，添加/bin 目录到环境变量**
+## **二、解压到本地，添加/bin 目录到环境变量**
 
-**三、初始化 MySQL 数据库**
+## **三、初始化 MySQL 数据库**
 
 进入到目录：
 
@@ -22,7 +22,7 @@ mysqld --initialize-insecure
 
 初始化完成后，在 mysql 根目录中会自动生成 data 文件夹。
 
-**四、为 Windows 系统安装 MySQL 服务**
+## **四、为 Windows 系统安装 MySQL 服务**
 
 执行命令：
 
@@ -36,7 +36,7 @@ mysqld install MySQL_8.0
 
 ![img](./assets/1642260623627012427.png)
 
-**五、启动服务后，需要设置 MySQL 的登录密码**
+## **五、启动服务后，需要设置 MySQL 的登录密码**
 
 > 首次安装第一次进入，root 默认没有密码，直接执行`mysql -uroot -p`进入
 
@@ -56,7 +56,7 @@ flush privileges;
 mysql -uroot -p
 ```
 
-**六、此时，本地使用 Navicat。还需要进行设置。**
+## **六、此时，本地使用 Navicat。还需要进行设置。**
 
 进入 mysql 之后，执行命令：
 
@@ -69,7 +69,7 @@ flush privileges;
 
 ![img](./assets/1642261155324001294.png)
 
-七、对于 my.ini 文件的配置
+## 七、对于 my.ini 文件的配置
 
 **在安装的根目录下，需要手动添加 my.ini 文件**，如下图：
 
@@ -112,7 +112,7 @@ default-character-set=utf8mb4
 
 客户端的编码方式，默认是 GBK，现在已经更改为了 utf8mb4。
 
-# 以 root 用户远程连接 MySQL8.0 问题总结
+## 以 root 用户远程连接 MySQL8.0 问题总结
 
 ```bash
 
